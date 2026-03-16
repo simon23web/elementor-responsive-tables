@@ -58,10 +58,9 @@ class Elementor_Responsive_Table_Widget extends \Elementor\Widget_Base {
 			'row_content',
 			[
 				'label' => esc_html__( 'Row Content', 'elementor-responsive-tables' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'rows' => 3,
+				'type' => \Elementor\Controls_Manager::WYSIWYG,
 				'default' => esc_html__( 'Cell 1 | Cell 2 | Cell 3', 'elementor-responsive-tables' ),
-				'description' => esc_html__( 'Enter table cells separated by the pipe (|) character.', 'elementor-responsive-tables' ),
+				'description' => esc_html__( 'Enter table cells separated by the pipe (|) character. It is recommended to keep them on a single line.', 'elementor-responsive-tables' ),
 			]
 		);
 
@@ -392,7 +391,21 @@ class Elementor_Responsive_Table_Widget extends \Elementor\Widget_Base {
 		foreach ( $settings['table_rows'] as $index => $item ) {
 			
 			$is_header = ( 'yes' === $item['is_header'] );
-			$cells = explode( '|', $item['row_content'] );
+			
+			// Parse text editor to support shortcodes and formatting
+			$content = $this->parse_text_editor( $item['row_content'] );
+			$content = trim( $content );
+			
+			// Elementor WYSIWYG/parse_text_editor might wrap the whole string in <p>...</p>
+			// We remove the outermost <p> tags so splitting by | doesn't corrupt HTML structure
+			if ( str_starts_with( $content, '<p>' ) && str_ends_with( $content, '</p>' ) ) {
+				$content = substr( $content, 3, -4 );
+			}
+
+			// Clean up non-breaking spaces around pipes
+			$content = str_replace( '&nbsp;', ' ', $content );
+			
+			$cells = explode( '|', $content );
 			
 			// Collect headers if first row is header
 			if ( $is_first_row && $is_header ) {

@@ -2,10 +2,9 @@
 /**
  * Plugin Name: Elementor Responsive Tables
  * Description: A custom Elementor widget to easily create styled, responsive tables.
- * Plugin URI:  https://example.com/elementor-responsive-tables
  * Version:     1.0.0
- * Author:      Simon Piggott
- * Author URI:  https://example.com/
+ * Author:      23Web
+ * Author URI:  https://www.23web.dev
  * Text Domain: elementor-responsive-tables
  */
 
