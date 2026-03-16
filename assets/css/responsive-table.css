@@ -1,0 +1,78 @@
+/* 
+ * Elementor Responsive Tables Base CSS 
+ */
+
+.ert-table-wrapper {
+	width: 100%;
+	overflow: hidden; /* For border radius support on wrapper */
+}
+
+.ert-table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 0;
+}
+
+.ert-table th, 
+.ert-table td {
+	padding: 10px;
+	text-align: left; /* Fallback */
+}
+
+/* Responsive Modes */
+
+/* Scrollable Horizonally */
+.ert-mobile-scroll .ert-table-wrapper {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Stacked Vertically */
+@media (max-width: 767px) {
+	.ert-mobile-stack .ert-table-wrapper {
+		border: 0 !important;
+		box-shadow: none !important;
+	}
+
+	.ert-mobile-stack .ert-table {
+		display: block;
+	}
+
+	.ert-mobile-stack .ert-table thead {
+		display: none; /* Hide header row */
+	}
+
+	.ert-mobile-stack .ert-table tbody,
+	.ert-mobile-stack .ert-table tr,
+	.ert-mobile-stack .ert-table td {
+		display: block;
+		width: 100%;
+	}
+
+	.ert-mobile-stack .ert-table tr {
+		margin-bottom: 20px;
+		border-bottom: 2px solid #ddd; /* Basic fallback */
+		background: transparent !important; /* Avoid striped row issues */
+	}
+
+	/* Optional: If we want to add data labels, we would need to pass them via JS or CSS data attributes 
+	   For now, simple block stacking is achieved here. 
+	*/
+	.ert-mobile-stack .ert-table td {
+		text-align: right; /* Values to the right */
+		padding-left: 50%;
+		position: relative;
+	}
+	
+	.ert-mobile-stack .ert-table td::before {
+		content: attr(data-label);
+		position: absolute;
+		left: 10px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+		text-align: left;
+		font-weight: bold;
+	}
+}
