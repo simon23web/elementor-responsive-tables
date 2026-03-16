@@ -233,27 +233,56 @@ class Elementor_Responsive_Table_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'header_text_align',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor-responsive-tables' ),
+				'label' => esc_html__( 'Horizontal Alignment', 'elementor-responsive-tables' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'elementor-responsive-tables' ),
-						'icon' => 'eicon-text-align-left',
+						'icon' => 'eicon-h-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'elementor-responsive-tables' ),
-						'icon' => 'eicon-text-align-center',
+						'icon' => 'eicon-h-align-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'elementor-responsive-tables' ),
-						'icon' => 'eicon-text-align-right',
+						'icon' => 'eicon-h-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'Justified', 'elementor-responsive-tables' ),
+						'icon' => 'eicon-text-align-justify',
 					],
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ert-table thead th, {{WRAPPER}} .ert-table tr.ert-is-header th, {{WRAPPER}} .ert-table tr.ert-is-header td' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'header_vertical_align',
+			[
+				'label' => esc_html__( 'Vertical Alignment', 'elementor-responsive-tables' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'top' => [
+						'title' => esc_html__( 'Top', 'elementor-responsive-tables' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'middle' => [
+						'title' => esc_html__( 'Middle', 'elementor-responsive-tables' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'bottom' => [
+						'title' => esc_html__( 'Bottom', 'elementor-responsive-tables' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ert-table thead th, {{WRAPPER}} .ert-table tr.ert-is-header th, {{WRAPPER}} .ert-table tr.ert-is-header td' => 'vertical-align: {{VALUE}};',
 				],
 			]
 		);
@@ -335,27 +364,56 @@ class Elementor_Responsive_Table_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'body_text_align',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor-responsive-tables' ),
+				'label' => esc_html__( 'Horizontal Alignment', 'elementor-responsive-tables' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'elementor-responsive-tables' ),
-						'icon' => 'eicon-text-align-left',
+						'icon' => 'eicon-h-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'elementor-responsive-tables' ),
-						'icon' => 'eicon-text-align-center',
+						'icon' => 'eicon-h-align-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'elementor-responsive-tables' ),
-						'icon' => 'eicon-text-align-right',
+						'icon' => 'eicon-h-align-right',
+					],
+					'justify' => [
+						'title' => esc_html__( 'Justified', 'elementor-responsive-tables' ),
+						'icon' => 'eicon-text-align-justify',
 					],
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ert-table tbody td' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'body_vertical_align',
+			[
+				'label' => esc_html__( 'Vertical Alignment', 'elementor-responsive-tables' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'top' => [
+						'title' => esc_html__( 'Top', 'elementor-responsive-tables' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'middle' => [
+						'title' => esc_html__( 'Middle', 'elementor-responsive-tables' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'bottom' => [
+						'title' => esc_html__( 'Bottom', 'elementor-responsive-tables' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ert-table tbody td' => 'vertical-align: {{VALUE}};',
 				],
 			]
 		);
